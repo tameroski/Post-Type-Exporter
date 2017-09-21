@@ -1,15 +1,25 @@
-# Post Type Exporter
+=== Plugin Name ===
+Contributors: tameroski
+Donate link: http://www.keybored.fr
+Tags: cpt, export
+Requires at least: 4.0
+Tested up to: 4.9
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 1.0
 
-Wordpress Plugin for exporting a list of custom post type entries to a CSV or XLS file.
+Plugin for exporting a list of custom post type entries to a CSV file.
 
-Support default and ACF Fields.
+== Description ==
 
-By default, the plugin is only exporting posts. You need to use a filter to add your own post types configuration. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
+Plugin for exporting a list of custom post type entries to a CSV file.
+
+By default, the plugin is only exporting posts. You need to use a filter to add your own configuration. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
 
 ```
 function my_post_types( $post_types ){
     $post_types = array(
-        "my-cpt" => array( // Post Type Slug
+        "my-cpt" => array(
             "fields"        => array(
                 'post_date'     => __('Date', 'wordpress'),
                 'post_title'    => __('Title', 'wordpress')
@@ -46,3 +56,16 @@ function my_export_type( $type ){
 }
 add_filter( 'pte_export_type', 'my_export_type' );
 ```
+
+== Installation ==
+
+
+
+== Screenshots ==
+
+
+
+== Changelog ==
+
+= 1.0 =
+* Initial version
