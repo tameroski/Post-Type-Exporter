@@ -4,6 +4,8 @@ Wordpress Plugin for exporting a list of custom post type entries to a CSV or XL
 
 Support default and ACF Fields.
 
+![Plugin preview](images/screenshot.png)
+
 By default, the plugin is only exporting posts. You need to use a filter to add your own post types configuration. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
 
 ```php
