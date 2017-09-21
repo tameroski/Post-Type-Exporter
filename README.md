@@ -6,7 +6,7 @@ Support default and ACF Fields.
 
 By default, the plugin is only exporting posts. You need to use a filter to add your own post types configuration. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
 
-```
+```php
 function my_post_types( $post_types ){
     $post_types = array(
         "my-cpt" => array( // Post Type Slug
@@ -40,7 +40,7 @@ For each post type, array keys represents the fields to export, and array values
 
 By default, the plugin is exporting xls file. But it is also possible to change this to csv : 
 
-```
+```php
 function my_export_type( $type ){
     return 'csv';
 }
