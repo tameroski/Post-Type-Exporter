@@ -106,16 +106,23 @@ class Post_Type_Exporter_Admin {
 		// Plugin's own JS
 		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/post-type-exporter-admin.js', array( 'pickadate' ), $this->version, false );
 
+		// Labels
+		$labels = array(
+			"export_button"	=> __('Export', 'post-type-exporter'),
+			"start"			=> __('Export start date', 'post-type-exporter'),
+			"end"				=> __('Export end date', 'post-type-exporter'),
+			"start_short"			=> __('Start', 'post-type-exporter'),
+			"end_short"				=> __('End', 'post-type-exporter'),
+			"error_start"		=> __('Please select a start date', 'post-type-exporter'),
+			"error_end"		=> __('Please select an end date', 'post-type-exporter'),
+			"error_cpt"		=> __('Invalid post type', 'post-type-exporter'),
+		);
+
 		// Localize the script with plugin data
 		$data = array(
 			"link"					=> plugins_url($this->plugin_name . '/process/export.php'),
 			"post_types"			=> array_keys(self::get_post_types()),
-			"label_export_button"	=> __('Export', 'post-type-exporter'),
-			"label_start"			=> __('Start', 'post-type-exporter'),
-			"label_end"				=> __('End', 'post-type-exporter'),
-			"error_start"		=> __('Please select a start date', 'post-type-exporter'),
-			"error_end"		=> __('Please select an end date', 'post-type-exporter'),
-			"error_cpt"		=> __('Invalid post type', 'post-type-exporter'),
+			"labels"				=> $labels
 		);
 		wp_localize_script( $this->plugin_name, 'data', $data );
 		wp_enqueue_script( $this->plugin_name );
