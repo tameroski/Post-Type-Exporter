@@ -57,4 +57,4 @@ function my_export_type( $type ){
 add_filter( 'pte_export_type', 'my_export_type' );
 ```
 
-Only 'csv' and 'xls' are supported values for the moment.
+Only `csv` and `xls` are supported values for the moment.
