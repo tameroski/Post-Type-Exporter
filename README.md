@@ -6,7 +6,13 @@ Support default and ACF Fields.
 
 ![Plugin preview](images/screenshot.png)
 
-By default, the plugin is only exporting posts. You need to use a filter to add your own post types configuration. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
+## Configuration
+
+Plugin settings can only be changed using filters for the moment.
+
+### Post Types
+
+The plugin is only exporting posts by default. You need to use the `pte_post_types` filter to add / remove post types. Let's say you want to add the export feature to pages and a custom post type with slug `my-cpt` :
 
 ```php
 function my_post_types( $post_types ){
@@ -40,7 +46,9 @@ add_filter( 'pte_post_types', 'my_post_types' );
 
 For each post type, array keys represents the fields to export, and array values represents the corresponding column title in the exported file.
 
-By default, the plugin is exporting xls file. But it is also possible to change this to csv : 
+### Export type
+
+By default, the plugin is exporting xls file. But it is also possible to change this to csv using the `pte_export_type` filter : 
 
 ```php
 function my_export_type( $type ){
@@ -48,3 +56,5 @@ function my_export_type( $type ){
 }
 add_filter( 'pte_export_type', 'my_export_type' );
 ```
+
+Only 'csv' and 'xls' are supported values for the moment.
