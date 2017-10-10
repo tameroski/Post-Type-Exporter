@@ -85,9 +85,13 @@ if ($query->have_posts()){
 	wp_reset_postdata();
 }
 
+// Filename
+$default_filename = Post_Type_Exporter_FILENAME . "-". $post_type.'-'.date('dMY_Hi');
+$export_filename = apply_filters( 'pte_export_filename', $default_filename, $post_type );
+
 if ( $export_type == 'csv' ){
 	// Building file props
-	$filename = Post_Type_Exporter_FILENAME . "-". $post_type.'-'.date('dMY_Hi').'.csv';
+	$filename = $export_filename.'.csv';
 	header('Content-Encoding: UTF-8');
 	header("Content-type: text/csv; charset=utf-8");
 	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -106,7 +110,7 @@ if ( $export_type == 'csv' ){
 	exit;
 } else if ( $export_type == 'xls' ) {
 	// Building file props
-	$filename = Post_Type_Exporter_FILENAME . "-". $post_type.'-'.date('dMY_Hi').'.xls';
+	$filename = $export_filename.'.xls';
 	header('Content-Encoding: UTF-8');
     header("Content-Type: Application/vnd.ms-excel; charset=utf-8");
     header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
@@ -125,7 +129,7 @@ if ( $export_type == 'csv' ){
     // Output data
     foreach ( $csv_values as $data ) {
         array_walk($data, 'cleanData');
-        
+
         $data_string = implode("\t", array_map('utf8_decode',array_values($data)));
 
         echo $data_string . "\r\n";
