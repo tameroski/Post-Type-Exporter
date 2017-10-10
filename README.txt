@@ -6,7 +6,7 @@ Requires at least: 4.0
 Tested up to: 4.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 Plugin for exporting a list of custom post type entries to a CSV file.
 
@@ -25,7 +25,7 @@ function my_post_types( $post_types ){
                 'post_title'    => __('Title', 'wordpress')
             ),
             "fields_acf"    => array(
-                'field_1'       => __('Field 1', 'my-text-domain'), 
+                'field_1'       => __('Field 1', 'my-text-domain'),
                 'field_2'       => __('Field 2', 'my-text-domain')
             )
         ),
@@ -35,12 +35,12 @@ function my_post_types( $post_types ){
                 'post_title'    => __('Title', 'wordpress')
             ),
             "fields_acf"    => array(
-                'field_A'       => __('Field A', 'my-text-domain'), 
+                'field_A'       => __('Field A', 'my-text-domain'),
                 'field_B'       => __('Field B', 'my-text-domain')
             )
         )
     );
-    
+
     return $post_types;
 }
 add_filter( 'pte_post_types', 'my_post_types' );
@@ -48,13 +48,22 @@ add_filter( 'pte_post_types', 'my_post_types' );
 
 For each post type, array keys represents the fields to export, and array values represents the corresponding column title in the exported file.
 
-By default, the plugin is exporting xls file. But it is also possible to change this to csv : 
+By default, the plugin is exporting xls file. But it is also possible to change this to csv :
 
 ```
 function my_export_type( $type ){
     return 'csv';
 }
 add_filter( 'pte_export_type', 'my_export_type' );
+```
+
+Export file name can be changed using the `pte_export_filename` filter :
+
+```php
+function my_export_filename( $filename, $post_type ){
+    return 'foobar-'.$post_type;
+}
+add_filter( 'pte_export_filename', 'my_export_filename', 10, 2 );
 ```
 
 == Installation ==

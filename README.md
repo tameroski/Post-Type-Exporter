@@ -23,7 +23,7 @@ function my_post_types( $post_types ){
                 'post_title'    => __('Title', 'wordpress')
             ),
             "fields_acf"    => array(
-                'field_1'       => __('Field 1', 'my-text-domain'), 
+                'field_1'       => __('Field 1', 'my-text-domain'),
                 'field_2'       => __('Field 2', 'my-text-domain')
             )
         ),
@@ -33,12 +33,12 @@ function my_post_types( $post_types ){
                 'post_title'    => __('Title', 'wordpress')
             ),
             "fields_acf"    => array(
-                'field_A'       => __('Field A', 'my-text-domain'), 
+                'field_A'       => __('Field A', 'my-text-domain'),
                 'field_B'       => __('Field B', 'my-text-domain')
             )
         )
     );
-    
+
     return $post_types;
 }
 add_filter( 'pte_post_types', 'my_post_types' );
@@ -48,7 +48,7 @@ For each post type, array keys represents the fields to export, and array values
 
 ### Export type
 
-By default, the plugin is exporting xls file. But it is also possible to change this to csv using the `pte_export_type` filter : 
+By default, the plugin is exporting xls file. But it is also possible to change this to csv using the `pte_export_type` filter :
 
 ```php
 function my_export_type( $type ){
@@ -58,3 +58,14 @@ add_filter( 'pte_export_type', 'my_export_type' );
 ```
 
 Only `csv` and `xls` are supported values for the moment.
+
+### Export file name
+
+Export file name can be changed using the `pte_export_filename` filter :
+
+```php
+function my_export_filename( $filename, $post_type ){
+    return 'foobar-'.$post_type;
+}
+add_filter( 'pte_export_filename', 'my_export_filename', 10, 2 );
+```
