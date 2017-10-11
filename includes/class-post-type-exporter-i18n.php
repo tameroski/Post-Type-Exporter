@@ -24,24 +24,21 @@
  * @subpackage Post_Type_Exporter/includes
  * @author     Tameroski <jerome@keybored.fr>
  */
-class Post_Type_Exporter_i18n {
+class Post_Type_Exporter_i18n
+{
 
 
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
-
-		load_plugin_textdomain(
-			'post-type-exporter',
-			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
-		);
-
-	}
-
-
-
+    /**
+     * Load the plugin text domain for translation.
+     *
+     * @since    1.0.0
+     */
+    public function load_plugin_textdomain()
+    {
+        load_plugin_textdomain(
+            'post-type-exporter',
+            false,
+            dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
+        );
+    }
 }

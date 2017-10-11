@@ -1,10 +1,12 @@
-#pte-export{
-	margin-top: 15px;
+#pte-export {
+    margin-top: 15px;
 }
-#pte-export .message{
-	color: red;
+
+#pte-export .message {
+    color: red;
 }
-.datepicker{
-	max-width: 90px;
-	margin: 0 4px 0 0;
+
+.datepicker {
+    max-width: 90px;
+    margin: 0 4px 0 0;
 }

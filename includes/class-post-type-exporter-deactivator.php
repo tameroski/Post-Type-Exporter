@@ -20,17 +20,17 @@
  * @subpackage Post_Type_Exporter/includes
  * @author     Tameroski <jerome@keybored.fr>
  */
-class Post_Type_Exporter_Deactivator {
+class Post_Type_Exporter_Deactivator
+{
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function deactivate() {
-
-	}
-
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since    1.0.0
+     */
+    public static function deactivate()
+    {
+    }
 }

@@ -26,41 +26,43 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (! defined('WPINC')) {
+    die;
 }
 
-define( 'PLUGIN_VERSION', '1.0.1' );
+define('PLUGIN_VERSION', '1.0.1');
 
-define( 'Post_Type_Exporter_SEPARATOR', ';' );
-define( 'Post_Type_Exporter_FILENAME', 'export' );
+define('Post_Type_Exporter_SEPARATOR', ';');
+define('Post_Type_Exporter_FILENAME', 'export');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-post-type-exporter-activator.php
  */
-function activate_Post_Type_Exporter() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-post-type-exporter-activator.php';
-	Post_Type_Exporter_Activator::activate();
+function activate_Post_Type_Exporter()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-post-type-exporter-activator.php';
+    Post_Type_Exporter_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-post-type-exporter-deactivator.php
  */
-function deactivate_Post_Type_Exporter() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-post-type-exporter-deactivator.php';
-	Post_Type_Exporter_Deactivator::deactivate();
+function deactivate_Post_Type_Exporter()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-post-type-exporter-deactivator.php';
+    Post_Type_Exporter_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_Post_Type_Exporter' );
-register_deactivation_hook( __FILE__, 'deactivate_Post_Type_Exporter' );
+register_activation_hook(__FILE__, 'activate_Post_Type_Exporter');
+register_deactivation_hook(__FILE__, 'deactivate_Post_Type_Exporter');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-post-type-exporter.php';
+require plugin_dir_path(__FILE__) . 'includes/class-post-type-exporter.php';
 
 /**
  * Begins execution of the plugin.
@@ -71,10 +73,9 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-post-type-exporter.php';
  *
  * @since    1.0.0
  */
-function run_Post_Type_Exporter() {
-
-	$plugin = new Post_Type_Exporter();
-	$plugin->run();
-
+function run_Post_Type_Exporter()
+{
+    $plugin = new Post_Type_Exporter();
+    $plugin->run();
 }
 run_Post_Type_Exporter();
