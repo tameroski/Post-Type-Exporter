@@ -76,7 +76,9 @@ if ($query->have_posts()) {
         if (function_exists('get_field')) {
             foreach ($fields_acf as $field_slug => $field_title) {
                 $field_value = get_field($field_slug, $post);
-                error_log(print_r($field_value, true));
+                if (is_array($field_value)){
+                    $field_value = implode(", ", array_values($field_value));
+                }
                 $current_line[$field_slug] = $field_value;
             }
         } else {
