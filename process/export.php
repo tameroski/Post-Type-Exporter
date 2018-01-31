@@ -75,7 +75,9 @@ if ($query->have_posts()) {
         }
         if (function_exists('get_field')) {
             foreach ($fields_acf as $field_slug => $field_title) {
-                $current_line[$field_slug] = get_field($field_slug, $post);
+                $field_value = get_field($field_slug, $post);
+                error_log(print_r($field_value, true));
+                $current_line[$field_slug] = $field_value;
             }
         } else {
             foreach ($fields_acf as $field_slug => $field_title) {
@@ -124,6 +126,10 @@ if ($export_type == 'csv') {
     // Cleaning stuff for Excell
     function cleanData(&$str)
     {
+        // is it a string ?
+        if (!is_string($str))
+            $str = '';
+
         $str = preg_replace("/\t/", "\\t", $str);
         $str = preg_replace("/\r?\n/", "\\n", $str);
         if (strstr($str, '"')) {

@@ -16,7 +16,7 @@
  * Plugin Name:       Post Type Exporter
  * Plugin URI:        http://www.keybored.fr
  * Description:       Export a list of entries from any custom or regular post type.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Tameroski
  * Author URI:        http://www.keybored.fr
  * License:           GPL-2.0+
@@ -30,7 +30,7 @@ if (! defined('WPINC')) {
     die;
 }
 
-define('PLUGIN_VERSION', '1.0.1');
+define('PLUGIN_VERSION', '1.0.2');
 
 define('Post_Type_Exporter_SEPARATOR', ';');
 define('Post_Type_Exporter_FILENAME', 'export');
