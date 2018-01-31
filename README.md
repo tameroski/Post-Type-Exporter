@@ -74,4 +74,4 @@ add_filter( 'pte_export_filename', 'my_export_filename', 10, 2 );
 
 `pte_capability` : filter to change the capability needed to display the export form. Default is 'manage_options'.
 
-`pte_values-separator` : filter to change the separator for ACF multiple values field (like checkboxes, etc.). Default is ', '.
+`pte_values_separator` : filter to change the separator for ACF multiple values field (like checkboxes, etc.). Default is ', '.
