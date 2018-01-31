@@ -15,7 +15,7 @@ require('../../../../wp-load.php');
 $user = wp_get_current_user();
 
 // Security First
-if (!$user || !user_can($user, 'manage_options')) {
+if (!$user || !user_can($user, apply_filters('pte_capability', Post_Type_Exporter_CAPABILITY))) {
     return;
 }
 
