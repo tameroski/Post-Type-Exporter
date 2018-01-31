@@ -15,7 +15,7 @@ require('../../../../wp-load.php');
 $user = wp_get_current_user();
 
 // Security First
-if (!$user || !user_can($user, 'manage_options')) {
+if (!$user || !user_can($user, apply_filters('pte_capability', Post_Type_Exporter_CAPABILITY))) {
     return;
 }
 
@@ -57,7 +57,8 @@ $query = new WP_Query($query_args);
 $cpts = Post_Type_Exporter_Admin::get_post_types();
 $cpt = $cpts[$post_type];
 
-$export_type = apply_filters('pte_export_type', Post_Type_Exporter_Admin::DEFAULT_EXPORT_TYPE);
+$export_type = apply_filters('pte_export_type', Post_Type_Exporter_EXPORT_TYPE);
+$values_separator = apply_filters('pte_values_separator', Post_Type_Exporter_VALUES_SEPARATOR);
 
 $fields = $cpt['fields'];
 $fields_acf = $cpt['fields_acf'];
@@ -75,7 +76,11 @@ if ($query->have_posts()) {
         }
         if (function_exists('get_field')) {
             foreach ($fields_acf as $field_slug => $field_title) {
-                $current_line[$field_slug] = get_field($field_slug, $post);
+                $field_value = get_field($field_slug, $post);
+                if (is_array($field_value)){
+                    $field_value = implode($values_separator, array_values($field_value));
+                }
+                $current_line[$field_slug] = $field_value;
             }
         } else {
             foreach ($fields_acf as $field_slug => $field_title) {
@@ -124,6 +129,10 @@ if ($export_type == 'csv') {
     // Cleaning stuff for Excell
     function cleanData(&$str)
     {
+        // is it a string ?
+        if (!is_string($str))
+            $str = '';
+
         $str = preg_replace("/\t/", "\\t", $str);
         $str = preg_replace("/\r?\n/", "\\n", $str);
         if (strstr($str, '"')) {
