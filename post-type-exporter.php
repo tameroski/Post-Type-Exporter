@@ -34,6 +34,8 @@ define('PLUGIN_VERSION', '1.0.2');
 
 define('Post_Type_Exporter_SEPARATOR', ';');
 define('Post_Type_Exporter_FILENAME', 'export');
+define('Post_Type_Exporter_EXPORT_TYPE', 'xls'); // Or 'csv'
+define('Post_Type_Exporter_VALUES_SEPARATOR', ', ');
 
 /**
  * The code that runs during plugin activation.

@@ -22,8 +22,6 @@
  */
 class Post_Type_Exporter_Admin
 {
-    const DEFAULT_EXPORT_TYPE = 'xls'; // Or 'csv'
-
     /**
      * The ID of this plugin.
      *

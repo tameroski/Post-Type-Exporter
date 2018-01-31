@@ -57,7 +57,8 @@ $query = new WP_Query($query_args);
 $cpts = Post_Type_Exporter_Admin::get_post_types();
 $cpt = $cpts[$post_type];
 
-$export_type = apply_filters('pte_export_type', Post_Type_Exporter_Admin::DEFAULT_EXPORT_TYPE);
+$export_type = apply_filters('pte_export_type', Post_Type_Exporter_EXPORT_TYPE);
+$values_separator = apply_filters('pte_values_separator', Post_Type_Exporter_VALUES_SEPARATOR);
 
 $fields = $cpt['fields'];
 $fields_acf = $cpt['fields_acf'];
@@ -77,7 +78,7 @@ if ($query->have_posts()) {
             foreach ($fields_acf as $field_slug => $field_title) {
                 $field_value = get_field($field_slug, $post);
                 if (is_array($field_value)){
-                    $field_value = implode(", ", array_values($field_value));
+                    $field_value = implode($values_separator, array_values($field_value));
                 }
                 $current_line[$field_slug] = $field_value;
             }
